@@ -1,0 +1,23 @@
+# Python specific
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/  # Your virtual environment
+*.env  # Environment variables file
+
+# Database and temporary files
+instance/
+temp_audio_uploads/ # Temporary audio files
+*.db # SQLite database files (like app.db)
+
+# IDE specific files
+.vscode/
+.idea/
+
+# PyTorch/ML specific
+*.pth # Your trained model weights
+*.pt
+*.joblib # Your speaker mapping

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Voice Recognition</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2 id="profile-heading">Your Profile</h2>
+        <div class="profile-details">
+            <ul>
+                <li><strong>Email:</strong> <span id="profile-email"></span></li>
+                <li><strong>Name:</strong> <span id="profile-name"></span></li>
+                <li><strong>Age:</strong> <span id="profile-age"></span></li>
+                <li><strong>Gender:</strong> <span id="profile-gender"></span></li>
+                <li><strong>Institution:</strong> <span id="profile-institution"></span></li>
+                <li><strong>Class/Department:</strong> <span id="profile-class-dept"></span></li>
+                <li><strong>Language:</strong> <span id="profile-language"></span></li>
+            </ul>
+        </div>
+        <p id="message-box"></p>
+
+        <a href="{{ url_for('detect') }}" class="button">Go to Voice Detector</a>
+        <button id="logout-button" class="button danger">Logout</button>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+Flask==2.3.2
+numpy
+pandas
+scikit-learn
+joblib
+ffmpeg-python
+werkzeug
+# torch and torchaudio will be installed separately using the official command

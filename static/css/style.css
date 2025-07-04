@@ -1,0 +1,183 @@
+/* General Body and Container */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #978fff, #40f1ef); /* Light blue gradient */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    line-height: 1.6;
+}
+
+
+.container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+    margin: 20px;
+    box-sizing: border-box;
+}
+
+h1, h2 {
+    color: #2193b0; /* Darker blue */
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+/* Buttons */
+.button, button[type="submit"] {
+    display: inline-block;
+    background-color: #18c6d6;
+    color: white;
+    padding: 12px 25px;
+    margin: 10px 5px;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.button:hover, button[type="submit"]:hover {
+    background-color: #1a7b93;
+    transform: translateY(-2px);
+}
+
+.button.secondary {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+.button.secondary:hover {
+    background-color: #d0d0d0;
+    transform: translateY(-2px);
+}
+
+.button.danger {
+    background-color: #dc3545;
+}
+
+.button.danger:hover {
+    background-color: #c82333;
+}
+
+/* Forms */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 15px;
+    text-align: left;
+}
+
+label {
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 5px;
+    display: block;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"],
+input[type="number"],
+select,
+input[type="file"] {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    width: calc(100% - 24px); /* Adjust for padding */
+    font-size: 1rem;
+    box-sizing: border-box; /* Include padding in width */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus,
+input[type="file"]:focus {
+    border-color: #2193b0;
+    box-shadow: 0 0 0 3px rgba(33, 147, 176, 0.2);
+    outline: none;
+}
+
+/* Messages/Feedback */
+#message-box { /* Unified message box for local */
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: 500;
+    display: none; /* Hidden by default */
+}
+
+.message-box.error {
+    background-color: #ffe0e6;
+    color: #c0392b;
+    border: 1px solid #c0392b;
+}
+
+.message-box.success {
+    background-color: #e6ffe0;
+    color: #27ae60;
+    border: 1px solid #27ae60;
+}
+
+.message-box.loading {
+    background-color: #e0f2f7;
+    color: #2193b0;
+    border: 1px solid #2193b0;
+}
+
+/* Profile Section Specifics */
+.profile-details ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    margin-top: 20px;
+}
+
+.profile-details ul li {
+    background-color: #f8f8f8;
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #eee;
+}
+
+.profile-details ul li strong {
+    color: #2193b0;
+    flex-basis: 30%; /* Adjust as needed */
+}
+
+.profile-details ul li span {
+    flex-grow: 1;
+    text-align: right;
+}
+
+/* Audio Detection Section */
+#record-buttons {
+    margin-top: 20px;
+}
+
+#audio-player {
+    width: 100%;
+    margin-top: 20px;
+}
+

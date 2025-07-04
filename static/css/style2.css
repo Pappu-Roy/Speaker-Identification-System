@@ -1,0 +1,180 @@
+/* voice-recognition-app-local/static/css/style2.css */
+
+/* General Body Styling (Applies to detect.html's body) */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #978fff, #40f1ef); /* Light blue gradient */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Container for the whole page content */
+.container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    width: 100%;
+    max-width: 1000px; /* Increased max-width for two-column layout */
+    margin: 20px;
+    box-sizing: border-box;
+}
+
+
+/* General Button Styles (Apply to all buttons in detect.html) */
+.button, button[type="submit"] {
+    display: inline-block;
+    background-color: #09c8f8; /* Primary blue */
+    color: white;
+    padding: 12px 25px;
+    margin: 10px 5px;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.button:hover, button[type="submit"]:hover {
+    background-color: #126f86; /* Darker blue on hover */
+    transform: translateY(-2px);
+}
+
+.button.secondary {
+    background-color: #9770ec; /* Light grey */
+    color: #333;
+}
+
+.button.secondary:hover {
+    background-color: #b2a7f1; /* Darker grey on hover */
+    transform: translateY(-2px);
+}
+
+.button.danger {
+    background-color: #dc3545; /* Red for danger actions like logout */
+}
+
+.button.danger:hover {
+    background-color: #c82333; /* Darker red on hover */
+}
+
+
+/* Layout for two columns */
+.two-column-layout {
+    display: flex;
+    flex-direction: row;        /* Explicitly set columns side-by-side */
+    flex-wrap: wrap;            /* Allow columns to wrap to next line on smaller screens */
+    justify-content: center;    /* Center the columns horizontally */
+    align-items: flex-start;    /* Align columns at the top */
+    gap: 30px;                  /* Space between columns */
+    margin-top: 30px;
+}
+
+.column {
+    flex: 1;                    /* Each column takes equal available space */
+    min-width: 400px;           /* Increased min-width for columns, adjust if too wide/narrow */
+    max-width: 48%;             /* Ensure columns don't grow too wide individually */
+    padding: 25px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+    text-align: left;
+    box-sizing: border-box;
+}
+
+/* Styles for titles and separators within columns */
+.column h3 {
+    color: #1a7b93;
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.column h4 {
+    color: #333;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+.column hr {
+    border: 0;
+    border-top: 1px dashed #ddd;
+    margin: 25px 0;
+}
+
+/* Specific form element styling for consistency */
+input[type="email"],
+input[type="password"],
+input[type="text"],
+input[type="number"],
+select,
+input[type="file"] {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    width: calc(100% - 24px); /* Adjust for padding */
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 10px; /* Added margin for spacing */
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus,
+input[type="file"]:focus {
+    border-color: #2193b0;
+    box-shadow: 0 0 0 3px rgba(33, 147, 176, 0.2);
+    outline: none;
+}
+
+/* Messages/Feedback */
+.message-box { /* Re-defined to ensure it works here */
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: 500;
+    display: none; /* Hidden by default */
+}
+
+.message-box.error {
+    background-color: #ffe0e6;
+    color: #c0392b;
+    border: 1px solid #c0392b;
+}
+
+.message-box.success {
+    background-color: #e6ffe0;
+    color: #27ae60;
+    border: 1px solid #27ae60;
+}
+
+.message-box.loading {
+    background-color: #e0f2f7;
+    color: #2193b0;
+    border: 1px solid #2193b0;
+}
+
+
+/* Responsive adjustments: Stack columns vertically on smaller screens */
+@media (max-width: 900px) { /* Adjusted breakpoint slightly larger to ensure stacking */
+    .two-column-layout {
+        flex-direction: column; /* Stack columns vertically */
+    }
+    .column {
+        min-width: unset;       /* Remove min-width when stacking */
+        max-width: 100%;        /* Take full width when stacked */
+    }
+}

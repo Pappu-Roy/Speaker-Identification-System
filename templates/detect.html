@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Detection & Enrollment</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style2.css') }}">
+
+</head>
+<body>
+    <div class="container">
+        <h2>Voice Detector & Enrollment</h2>
+        <p><h4>Manage your voice profiles by detecting existing ones or enrolling new ones.</h4></p>
+
+        <div class="two-column-layout">
+            <div class="column left-column">
+                <h3>Voice Detection</h3>
+                <p>Identify known speakers by recording or uploading audio.</p>
+
+                <h4>Record Live Audio</h4>
+                <div id="record-controls">
+                    <span id="recording-timer" style="font-weight: bold; padding: 150px 150px; color: #2193b0;">00:00</span><br>
+                    <button id="start-record-btn" class="button">Start Recording</button>
+                    <button id="stop-record-btn" class="button secondary" disabled>Stop Recording</button>
+                    <br><br>
+                    <button id="send-recorded-detect-btn" class="button" disabled>Detect Recorded Voice</button>
+                    <button id="send-recorded-enroll-btn" class="button secondary" disabled>Enroll Recorded Voice</button>
+                    <br><br>
+                </div>
+                <p id="record-status"></p>
+                <audio id="audio-playback" controls style="width: 100%; display: none; margin-top: 15px;"></audio>
+                <p id="record-message-box" class="message-box"></p>
+
+                <hr> <h4>Upload Audio for Detection</h4>
+                <form id="detect-upload-form" enctype="multipart/form-data">
+                    <label for="detect-audio-file">Select Audio File:</label>
+                    <input type="file" id="detect-audio-file" name="audio_file" accept="audio/*" required>
+                    <button type="submit">Detect Uploaded Voice</button>
+                </form>
+                <p id="message-box-detect"></p>
+            </div>
+
+            <div class="column right-column">
+                <h3>Voice Enrollment</h3>
+                <p>Add new voices to your system for future recognition.</p>
+
+                <h4>Enroll Via File Upload</h4>
+                <p>Provide at least 3-5 clear audio samples of your voice.</p>
+                <form id="enroll-upload-form" enctype="multipart/form-data">
+                    <label for="enroll-audio-file">Select Audio Samples:</label>
+                    <input type="file" id="enroll-audio-file" name="audio_samples" accept="audio/*" multiple required>
+                    <button type="submit">Enroll Uploaded Samples</button>
+                </form>
+                <p id="message-box-enroll"></p>
+
+                <hr> <h4>Enrollment Guidelines</h4>
+                <ul>
+                    <li>Use a quiet environment.</li>
+                    <li>Speak clearly and naturally.</li>
+                    <li>Avoid background music or noise.</li>
+                    <li>Samples should be at least 10 seconds long.</li>
+                </ul>
+            </div>
+        </div>
+
+        <hr style="margin: 30px 0;"> <a href="{{ url_for('profile') }}" class="button secondary">Back to Profile</a>
+        <button id="logout-button-detect" class="button danger">Logout</button>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
