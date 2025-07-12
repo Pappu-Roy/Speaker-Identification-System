@@ -142,19 +142,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- Profile Display Logic ---
+    // ... (rest of existing code in main.js)
+
+    // --- Profile Display Logic (Modified) ---
     const profileHeading = document.getElementById('profile-heading');
     const profileEmail = document.getElementById('profile-email');
     const profileName = document.getElementById('profile-name');
     const profileAge = document.getElementById('profile-age');
     const profileGender = document.getElementById('profile-gender');
     const profileInstitution = document.getElementById('profile-institution');
-    const profileClassDept = document.getElementById('profile-class-dept');
+    const profileClassDept = document.getElementById('profile-class-dept'); // Corrected ID to match HTML (using hyphen)
     const profileLanguage = document.getElementById('profile-language');
+    // New button elements
+    const goToDetectorBtn = document.getElementById('go-to-detector-btn');
+    const goToEnrollmentBtn = document.getElementById('go-to-enrollment-btn');
+
 
     if (profileHeading) { // Check if we are on the profile page
         if (isLoggedIn()) {
             const userEmail = getLoggedInUserEmail();
+            // Fetch user data from backend for profile page
             fetch(`/api/profile_data?email=${userEmail}`)
                 .then(response => response.json())
                 .then(data => {
@@ -169,6 +176,36 @@ document.addEventListener('DOMContentLoaded', () => {
                         profileInstitution.textContent = user.institution || 'N/A';
                         profileClassDept.textContent = user.class_dept || 'N/A';
                         profileLanguage.textContent = user.language || 'N/A';
+
+                        // --- NEW LOGIC: Check speaker enrollment status ---
+                        fetch(`/api/check_speaker_status?email=${userEmail}`)
+                            .then(response => response.json())
+                            .then(statusData => {
+                                if (statusData.status === 'success') {
+                                    if (statusData.is_enrolled) {
+                                        goToDetectorBtn.style.display = 'inline-block'; // Show Go to Voice Detector
+                                        goToEnrollmentBtn.style.display = 'none'; // Hide Go to Voice Enrollment
+                                        showMessage('message-box', 'You are already enrolled. Use the detector!', 'info');
+                                    } else {
+                                        goToDetectorBtn.style.display = 'none'; // Hide Go to Voice Detector
+                                        goToEnrollmentBtn.style.display = 'inline-block'; // Show Go to Voice Enrollment
+                                        showMessage('message-box', 'Your voice is not yet enrolled. Please enroll your voice first!', 'info');
+                                    }
+                                } else {
+                                    // Fallback if status check fails
+                                    goToDetectorBtn.style.display = 'inline-block';
+                                    goToEnrollmentBtn.style.display = 'inline-block'; // Show both as fallback
+                                    showMessage('message-box', statusData.error || 'Could not determine enrollment status.', 'error');
+                                }
+                            })
+                            .catch(error => {
+                                console.error("Enrollment status fetch error:", error);
+                                goToDetectorBtn.style.display = 'inline-block';
+                                goToEnrollmentBtn.style.display = 'inline-block'; // Show both as fallback
+                                showMessage('message-box', `Network error checking enrollment: ${error.message}`, 'error');
+                            });
+                        // --- END NEW LOGIC ---
+
                     } else {
                         showMessage('message-box', data.error || 'Failed to load profile data.', 'error');
                     }
@@ -181,6 +218,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // Already handled by redirect at the top
         }
     }
+
+// ... (rest of main.js code)
 
 
     // --- Audio Recording Variables and Elements (for detect.html) ---

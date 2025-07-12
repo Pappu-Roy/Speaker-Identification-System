@@ -134,6 +134,35 @@ def detect():
 
 # --- Backend API Routes ---
 
+# ... (rest of imports and initial Flask setup)
+
+# global speaker_mapping and id_to_email_mapping are already loaded at startup
+# (from your load_ml_assets() function)
+
+# ... (rest of frontend routes and existing API routes)
+
+@app.route('/api/check_speaker_status', methods=['GET'])
+def api_check_speaker_status():
+    if 'user_email' not in session:
+        return jsonify({"error": "Unauthorized"}), 401
+
+    user_email = request.args.get('email')
+    if not user_email:
+        return jsonify({"error": "Email parameter is missing"}), 400
+
+    if not speaker_mapping:
+        return jsonify({"error": "Speaker mapping not loaded."}), 500
+
+    # Check if the user's email exists as a value in the speaker_mapping (ID -> email)
+    # The 'speaker_mapping' variable itself is in the format {ID: 'email'}
+    # So we need to check if the user_email is present in the VALUES of the mapping
+    is_enrolled = user_email in speaker_mapping.values()
+
+    print(f"Checking enrollment for {user_email}: Is Enrolled = {is_enrolled}")
+    return jsonify({"status": "success", "is_enrolled": is_enrolled}), 200
+
+# ... (rest of your app.py code)
+
 @app.route('/api/signup', methods=['POST'])
 def api_signup():
     data = request.get_json()

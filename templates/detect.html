@@ -18,14 +18,14 @@
                 <p>Identify known speakers by recording or uploading audio.</p>
 
                 <h4>Record Live Audio</h4>
-                <div id="record-controls">
+                <div id="record-controls" align="center">
                     <span id="recording-timer" style="font-weight: bold; padding: 150px 150px; color: #2193b0;">00:00</span><br>
                     <button id="start-record-btn" class="button">Start Recording</button>
                     <button id="stop-record-btn" class="button secondary" disabled>Stop Recording</button>
                     <br><br>
                     <button id="send-recorded-detect-btn" class="button" disabled>Detect Recorded Voice</button>
                     <button id="send-recorded-enroll-btn" class="button secondary" disabled>Enroll Recorded Voice</button>
-                    <br><br>
+    
                 </div>
                 <p id="record-status"></p>
                 <audio id="audio-playback" controls style="width: 100%; display: none; margin-top: 15px;"></audio>
@@ -34,13 +34,18 @@
                 <hr> <h4>Upload Audio for Detection</h4>
                 <form id="detect-upload-form" enctype="multipart/form-data">
                     <label for="detect-audio-file">Select Audio File:</label>
-                    <input type="file" id="detect-audio-file" name="audio_file" accept="audio/*" required>
-                    <button type="submit">Detect Uploaded Voice</button>
+                    <input type="file" id="detect-audio-file" name="audio_file" accept="audio/*" required> <br>
+                    <center><button type="submit">Detect Uploaded Voice</button></center>
                 </form>
                 <p id="message-box-detect"></p>
+                <br><br>
+                <div align="center">
+                    <a href="https://sustaudio.zya.me/" target="_blank"><button class="button secondary"><font color="black">Contribute Your New Voice</font></button> </a>
+        
+                </div>
             </div>
 
-            <div class="column right-column">
+            <!--<div class="column right-column">
                 <h3>Voice Enrollment</h3>
                 <p>Add new voices to your system for future recognition.</p>
 
@@ -60,7 +65,7 @@
                     <li>Avoid background music or noise.</li>
                     <li>Samples should be at least 10 seconds long.</li>
                 </ul>
-            </div>
+            </div>  -->
         </div>
 
         <hr style="margin: 30px 0;"> <a href="{{ url_for('profile') }}" class="button secondary">Back to Profile</a>

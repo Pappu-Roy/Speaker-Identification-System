@@ -22,8 +22,12 @@
         </div>
         <p id="message-box"></p>
 
-        <a href="{{ url_for('detect') }}" class="button">Go to Voice Detector</a>
-        <button id="logout-button" class="button danger">Logout</button>
+        <div id="voice-action-buttons">
+            <a href="{{ url_for('detect') }}" id="go-to-detector-btn" class="button" style="display: none;">Go to Voice Detector</a>
+            <a href="https://sustaudio.zya.me/" target="_blank" id="go-to-enrollment-btn" class="button secondary" style="display: none;">Go to Voice Enrollment</a>
+        </div>
+        
+        <button id="logout-button" class="button danger" style="margin-top: 20px;">Logout</button>
     </div>
 
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
