@@ -131,8 +131,8 @@ The web application (in `templates/index.html` and `static/js/main.js`) will com
 
 This Reaserch project was developed by:
 
-* **Pappu Roy** (https://github.com/Pappu-Roy)
-* **Md. Sazim Mahmudur Rahman** (https://github.com/Sazim2019331087)
+* **Pappu Roy** [https://github.com/Pappu-Roy]
+* **Md. Sazim Mahmudur Rahman** [https://github.com/Sazim2019331087]
 
 ## Contact
 
