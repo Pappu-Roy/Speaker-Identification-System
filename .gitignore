@@ -7,7 +7,7 @@ __pycache__/
 env/
 venv/  # Your virtual environment
 *.env  # Environment variables file
-
+eval
 # Database and temporary files
 instance/
 temp_audio_uploads/ # Temporary audio files
